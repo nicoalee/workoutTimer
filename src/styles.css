@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+svg > text {
+    font-family: Montserrat
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(assets/fonts/Montserrat/Montserrat-Thin.ttf) format("truetype")
+}

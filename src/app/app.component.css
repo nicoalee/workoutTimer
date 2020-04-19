@@ -1,0 +1,111 @@
+.fill {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-color {
+    background-image: linear-gradient(45deg, #CB807D, white);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-input {
+    display: inline;
+    cursor: pointer;
+    outline-width: 0;
+}
+
+.title {
+    color: black;
+}
+
+.disabled {
+    background-color: lightgray !important;
+}
+
+.button-styling {
+    padding: 10px;
+    border-radius: 8px;
+    font-family: Montserrat;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 5%;
+    outline-width: 0;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    transition: ease-in 200ms;
+}
+
+.button-styling:hover {
+    background-color: lightgray;
+    transition: ease-in 200ms;
+    cursor: pointer;
+}
+
+.border {
+    border: 3px solid white;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+.clock-display {
+    font-size: 5rem; 
+    color: white; 
+    display: flex; 
+    width: 30vw; 
+    justify-content: center;
+}
+
+.timer-width {
+    width: 40vw;
+}
+
+.rightNumberWidth {
+    width: 6rem;
+}
+
+.showIfMobile {
+    display: none;
+}
+
+.button-pad {
+    width: 30%;
+    text-align: center;
+    margin: 1%;
+    padding: 5%;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.button-pad:hover {
+    background-color: gray;
+}
+
+@media only screen and (max-device-width : 505px) {
+    .timer-width {
+        width: 90vw;
+    }
+    .rightNumberWidth {
+        width: 6rem;
+    }
+    .button-styling {
+        width: 80%;
+        margin-top: 0;
+    }
+    .border {
+        padding: 6% 8%;
+    }
+    .showIfMobile {
+        display: block;
+    }
+    h1 {
+        margin: 1%;
+        font-size: 2rem;
+        white-space: nowrap;
+    }
+}
