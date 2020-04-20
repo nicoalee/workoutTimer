@@ -9,4 +9,6 @@
 last 2 versions
 Firefox ESR
 not dead
+ios_saf 13.4
+ios_saf >= 10
 not IE 9-11 # For IE 9-11 support, remove 'not'.
