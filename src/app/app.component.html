@@ -75,7 +75,7 @@
     </span>
   </div>
   <div class="timer-width" [style.display]="page === 'secondPage' ? 'block' : 'none'">
-    <circle-progress [percent]="percentComplete"></circle-progress>
+    <circle-progress [outerStrokeColor]="strokeColor" [percent]="percentComplete"></circle-progress>
   </div>
   <div style="position: absolute;" [style.display]="page === 'secondPage' ? 'block' : 'none'">
     <div class="clock-display">
@@ -91,9 +91,9 @@
       <fa-icon (click)="togglePause()" style="font-size: 2rem; color: white; cursor: pointer;" [icon]="paused ? faPlay : faPause"></fa-icon>
     </div>
   </div>
-  <div style="display: flex; justify-content: space-between; width: 300px;" [style.display]="page === 'secondPage' ? 'flex' : 'none'">
-    <fa-icon (click)="goToFirstPage()" [icon]="faTimes" style="color: red; font-size: 3rem; cursor: pointer;"></fa-icon>
-    <fa-icon (click)="skipToNextInterval()" [icon]="faForward" style="color: black; font-size: 3rem; cursor: pointer;"></fa-icon>
+  <div style="display: flex; justify-content: space-between; width: 200px;" [style.display]="page === 'secondPage' ? 'flex' : 'none'">
+    <fa-icon (click)="goToFirstPage()" [icon]="faTimes" style="color: white; font-size: 3rem; cursor: pointer;"></fa-icon>
+    <fa-icon (click)="skipToNextInterval()" [icon]="faForward" style="color: white; font-size: 3rem; cursor: pointer;"></fa-icon>
   </div>
 
 

@@ -34,6 +34,7 @@ export class AppComponent implements AfterViewInit {
   inputFinished: boolean = true
   page: string = "firstPage";
   timerType: string = "exercise"
+  strokeColor: string = "#c95d6369"
   
   exerciseTime = new Time(0, 0);
   restTime = new Time(0, 0);
@@ -143,9 +144,9 @@ export class AppComponent implements AfterViewInit {
       this.startRestTimer()
       return
     }
+    this.strokeColor = "#c95d6369"
     this.currVal = 0
     this.pausedVal = 0
-    this.percentComplete = 0
     this.timerType = "exercise"
     this._setTimer()
     this.pauser.next(false)
@@ -156,9 +157,9 @@ export class AppComponent implements AfterViewInit {
       this.startExerciseTimer()
       return
     }
+    this.strokeColor = "#accc9b87"
     this.currVal = 0
     this.pausedVal = 0
-    this.percentComplete = 0
     this.timerType = "rest"
     this._setTimer()
     this.pauser.next(false)
@@ -176,7 +177,7 @@ export class AppComponent implements AfterViewInit {
           this.pausedVal = this.pausedVal + this.currVal + 1
           return NEVER;
         } else {
-          return timer(1000, 10).pipe(
+          return timer(0, 10).pipe(
             map(val => {
               this.currVal = val;
               return val + this.pausedVal;
@@ -190,7 +191,15 @@ export class AppComponent implements AfterViewInit {
         this.percentComplete = data / this._getTotalSeconds()
         
         // at every second (will be some multiple of 100)
-        if(data % 100 == 0) {
+        if(data % 100 == 0 && data != 0) {
+          
+          this.displaySeconds = this.displaySeconds - 1
+
+          if(this.displaySeconds == -1) {
+            this.displayMinutes = this.displayMinutes - 1
+            this.displaySeconds = 59
+          }
+
           // timer reaches 00
           if(this.displaySeconds == 0) {
 
@@ -199,20 +208,17 @@ export class AppComponent implements AfterViewInit {
 
               this.playFinalizeSound()
               this.pauser.next(true)
-
+              setTimeout(() => {
+                this.percentComplete = 0
+              }, 100)
               setTimeout(() => {
                 this.timerType === 'exercise' ?  this.startRestTimer() : this.startExerciseTimer()
               }, 1300)
 
-            } else {
-              this.displayMinutes = this.displayMinutes - 1
-              this.displaySeconds = 60
             }
           } else {
             if((this.displayMinutes == 0) && (this.displaySeconds < 6)) this.playCountdownSound()
           }
-          if(!(this.displayMinutes == 0) || !(this.displaySeconds == 0)) this.displaySeconds = this.displaySeconds - 1
-
         }
     })
   }
